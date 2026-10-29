@@ -49,7 +49,7 @@ To stop the server, press Ctrl+C in the terminal. Restart it after every code ch
 1. **Change its personality.** Edit `INSTRUCTIONS` (try "talk like a pirate"). Same brain, different agent.
 2. **Add a tool.** Copy `getPrerequisites`, make a `listCourses` tool that returns every course in `PREREQUISITES`, and add it to `tools: [...]`. Ask "what courses are there?"
 3. **Break it.** Remove "Never guess." and ask about a course that isn't in the list.
-4. **Switch brains.** Change `MODEL` to another Gemini model, like `"google:gemini-3.5-flash-lite"`. Nothing else changes.
+4. **Switch brains.** Change `MODEL` to `new ChatGoogle({ model: "gemini-3.8-flash", thinkingLevel: "high" })`. Nothing else changes. Smarter? How much slower?
 
 ## Troubleshooting
 

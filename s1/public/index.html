@@ -51,16 +51,22 @@
     const waiting = show("thinking...", "tool");
 
     // Send the message to our server, which passes it to the agent
-    const response = await fetch("/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      });
+      const data = await response.json();
 
-    waiting.remove();
-    data.tools.forEach((t) => show("[tool] " + t, "tool"));
-    show(data.reply, "bot");
+      waiting.remove();
+      data.tools.forEach((t) => show("[tool] " + t, "tool"));
+      show(data.reply, "bot");
+    } catch (err) {
+      // Usually means the server isn't running (or crashed)
+      waiting.remove();
+      show("Can't reach the server. Is `node server.js` still running?", "bot");
+    }
   });
 </script>
 </body>
