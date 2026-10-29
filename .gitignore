@@ -1,0 +1,11 @@
+# Dependencies (reinstalled with `npm install`)
+node_modules/
+
+# Secrets: never commit API keys
+.env
+
+# Files the app writes at runtime
+my_plan.txt
+
+# macOS
+.DS_Store
